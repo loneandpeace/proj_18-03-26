@@ -1,0 +1,220 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.topspan{
+	color: black;
+	font-size: 12px;
+	color: gray;
+}
+.searchbar{
+	font-size: 16px;
+}
+#topback{
+	margin-bottom: 10px;
+}
+#leftguidbar ul li:hover{
+	color: #CC3333;
+}
+a{
+	text-decoration: none;
+}
+a:link{
+	color: gray;
+}
+a:visited{
+	color: gray;
+}
+a:hover{
+	color: #CC3333;
+}
+a:active{
+	color: black;
+}
+#leftguidbar a:link,
+#leftguidbar a:visited{
+	color: black;
+}
+#leftguidbar a:hover{
+	color: #CC3333;
+}
+
+.divclass01{
+	width: 1200px;
+	margin: 0 auto;
+}
+#commodityguid{
+	position: relative;
+}
+#commodityguid ul{
+	position: absolute;
+	bottom: 5px;
+	display: inline-block;
+	width: 945px;
+	padding-left: 10px;
+	justify-content: flex-end;
+	/*display: flex;*/
+}
+
+#commodityguid ul span{
+	color: gray;
+	font-size: 20px;
+	/*font-size: 20px;*/
+}
+/*#sada{
+	padding-bottom: 0px;);
+}*/
+#commodityguid li{
+	display: inline-block;
+	padding: 0px 35px;
+	font-size: 20px;
+	/*font-family: "新宋体";*/
+	font-family: "微软雅黑";
+}
+
+
+.searchbar{
+	height:30px;border-color: gray;
+}
+
+#logo{
+	width: 250px;
+}
+
+#guidbar{
+	padding: 4px 0;
+	padding-right: 10px;
+}
+
+#header{
+	padding: 5px 0;
+}
+
+#commodityguid{
+	padding: 5px 0 0 0;
+}
+/****************************/
+
+#leftguidbar ul{
+	list-style: none;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	/*margin-left: 25px;*/
+}
+
+#leftguidbar{
+	float: left;
+	width: 200px;
+	text-align: center;
+	margin-left: 25px;
+	margin-top: 10px;
+	
+}
+#leftguidbar p,#leftguidbar li{
+	padding: 6px 0;
+	/*margin-left: 25px;*/
+	font-size: 13px;
+	font-family: "微软雅黑";
+}
+#leftguidbar p{
+	background-color: gainsboro;
+	border: 1px solid black;
+}
+#cont div{
+	display: inline-block;
+}
+#cont{
+	500px
+}
+iframe{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	height: 500px;
+	width: 940px;
+	border: 1px solid gray;
+}
+#clear{
+	clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+/****************************************/
+
+
+
+
+
+.helper{
+	margin-top: 50px;
+	width: 1100px;
+	border: 1px solid darkgray;
+	padding: 20px 30px;
+}
+
+.helper ul{
+	width: 1000px;
+	list-style: none;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 15px;
+	font-weight: lighter;
+	display: block;
+}
+
+.helper li{
+	display: inline-block;
+	margin: 13px 30px;
+	padding: 0 10px;
+	color: red;
+	/*border-left: 1px solid gainsboro;*/
+}
+
+.helper ul:last-child{
+	/*border-left: 1px solid gainsboro;*/
+}
+
+.helper li a,
+.helper span{
+	color: gray;
+	font-size: 13px;
+	font-weight: lighter;
+}
+
+.helper ul:first-child li{
+	padding: 0 50px;
+}
+.helper li:first-child{
+	border-left: hidden;
+}
+
+.helper ul:last-child{
+	margin: 0 auto;
+	background-color: gainsboro;
+	/*display: flex;*/
+}
+/*.helper ul:last-child li{
+	flex-grow: 1;
+}*/
+.ahh{
+	display: inline-block;
+	height: 150px;
+	width: 2px;
+	border-left: 1px solid gainsboro;
+}
+.helper li a:hover{
+	color: black;
+}
+/*******************/
+#footer p{
+	padding: 10px 0;
+}

@@ -1,0 +1,138 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.divclass{
+	width: 1200px;
+	margin: 0 auto;
+}
+.logincontainer{
+	display: inline-block;
+}
+#boderline{
+	border: 1px solid gray;
+	text-align: center;
+	margin-top: 20px;
+}
+.logincontainer span:first-child{
+	color: gray;
+	font-size: 22px;
+	font-weight: 800;
+	font-family: "微软雅黑";
+}
+/*.logincontainer span:last-child{
+	font-size: 12px;
+	color: red;
+}*/
+#loginlable{
+	color: white;
+	background-color: #CC3333;
+	border-bottom: 1px solid gray;
+	line-height: 35px;
+	font-weight: bold;
+}
+input{
+	width: 90%;
+	height: 35px;
+	margin: 10px 0;
+	font-size: 15px;
+}
+#findback{
+	width: 90%;
+	margin-top: 5px;
+	font-size: 13px;
+	text-align: right;
+}
+input:last-child{
+	background-color: #CC3333;
+	color: white;
+	font-weight: bold;
+}
+form{
+	margin: 10px 5px;
+}
+#guidtoregister{
+	font-size: 15px;
+}
+a{
+	text-decoration: none;
+	font-weight: 600;
+}
+a:link{
+	color: #CC3333;
+}
+#guidtoregister a:visited{
+	color: #CC3333;
+}
+a:hover{
+	color: #CC3333;
+	text-decoration: underline;
+}
+#guidtoregister a:link{
+	color: #CC3333;
+}
+#maincontainer{
+	text-align: center;
+}
+#logoimg{
+	margin-top: 20px;
+}
+#maincontainer{
+	position: relative;
+}
+#maincontainer img{
+	position: absolute;
+	left: 100px;
+	top: 100px;
+}
+.logincontainer{
+	position: absolute;
+	top: 120px;
+	right: 100px;
+}
+
+#clear{
+	clear: both;
+}
+
+#boderline2{
+	margin-top: 20px;
+	border: 1px solid gray;
+	text-align: center;
+}
+.logincontainer2{
+	position: absolute;
+	top: 80px;
+	right: 100px;
+}
+.logincontainer2 span:first-child{
+	color: gray;
+	font-size: 22px;
+	font-weight: 800;
+	font-family: "微软雅黑";
+}
+
+
+#footer{
+	position: absolute;
+	padding: 10px 0;
+	bottom: 30px;
+}
+#footer P{
+	padding: 10px 0;
+}
+
+#check{
+	height: 18px;
+	width: 18px;
+	text-align: left;
+}
+#checkbox_span{
+	font-size: 13px;
+	padding-left: 10px;
+	color: gainsboro;
+}
+#foot{
+	position: absolute;
+	top: 700px;
+}

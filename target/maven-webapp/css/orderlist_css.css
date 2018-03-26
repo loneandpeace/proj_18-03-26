@@ -1,0 +1,158 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.divclass{
+	width: 1200px;
+	margin: 0 auto;
+}
+#logoimg{
+	margin-top: 20px;
+}
+ul{
+	list-style: none;
+	margin: 10px 10px;
+	margin-bottom: 20px;
+}
+li{
+	display: inline-block;
+	background-color: gainsboro;
+	padding: 5px 25px;
+	color: black;
+	font-weight: lighter;
+	font-family: "΢���ź�";
+	font-size: 15px;
+}
+#colorchange{
+	background-color: #CC3333;
+	color: white;
+}
+
+#spec{
+	border: 1px solid gray;
+	font-family: "微软雅黑";
+}
+.container{
+	height: 180px;
+}
+.container>p{
+	float: left;
+	background-color: gainsboro;
+	height: 180px;
+	line-height: 180px;
+	padding: 0px 40px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+}
+.container *{
+	display: inline-block;
+}
+.littlecon{
+	border: 2px solid #CC3333;
+	height: 110px;
+	width: 200px;
+	float: left;
+	margin-top: 30px ;margin-left: 50px;
+}
+
+/*.con12{
+	left: 250px;
+}*/
+
+/*.littlecon{
+	padding: 20px;
+	margin-left:20px ;
+	border: 2px solid #CC3333;
+}*/
+a{
+	text-decoration: none;
+	font-family: "微软雅黑";
+}
+a:link,
+a:visited{
+	color: #CC3333;
+}
+
+.asd{
+	font-size: 14px;
+}
+.littlecon p{
+	display: block;
+	padding: 2px;
+	color: gray;
+}
+.littlecon p:hover{
+	border-color: #CC3333;
+}
+.linehighta,.linehighta p{
+	line-height: 110px;
+	text-align: center;
+	width: 200px;
+}
+table{
+	margin: 5px 0;
+	width: 100%;
+	border: 1px solid gray;
+	border-top: hidden;
+	text-align: center;
+	border-spacing: 0;
+	font-family: "΢���ź�";
+}
+td{
+	font-size: 16px;
+	padding: 4px 15px;
+	border-top: 1px solid gray;
+}
+tr:first-child{
+	background-color: gray;
+	color: white;
+}
+form{
+	width: 100%;
+}
+#btn{
+	color: white;
+	font-size: 30px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	text-align: right;
+	padding: 5px 80px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	background-color: #CC3333;
+	margin-right: 10px;
+}
+
+.pad{
+	margin-right: 10px;
+}
+#posi{
+	position: relative;
+}
+#btn{
+	position: absolute;
+	right: 0;
+}
+
+
+
+#btn{
+	font-size: 28px;
+	color: white;
+	font-weight: bold;
+	background-color: #CC3333;
+	padding: 7px 75px;
+	border: 1px solid brown;
+	border-radius: 10px;	
+}
+#btn:hover{
+	color: white;
+	background-color: #DE3A3A;
+	text-decoration: none;
+	border-color: gray;
+}
+#btn:active{
+	background-color: firebrick;
+	text-decoration: none;
+	border-color: gray;
+}

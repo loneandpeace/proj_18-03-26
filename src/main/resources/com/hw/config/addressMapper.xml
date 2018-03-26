@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.hw.entity.Address">
+	
+  <insert id="addAddress" parameterType="java.util.Map" statementType="PREPARED">
+  	  insert into address (user_id, receiver_name, receiver_phone, receiver_mobile, receiver_province, receiver_city, receiver_district, receiver_address, receiver_zip, create_time, update_time) 
+  	  values(#{user_id}, #{receiver_name}, #{receiver_phone}, #{receiver_mobile}, #{receiver_province}, #{receiver_city}, #{receiver_district}, #{receiver_address}, #{receiver_zip}, now(), now())
+  </insert>
+  
+  <delete id="deleteAddressByUserId" parameterType="java.util.Map" statementType="PREPARED">
+  	  delete from address where user_id=#{user_id} and id=#{id}
+  </delete>
+  
+  <update id="updateUserAddressByUserId" parameterType="java.util.Map" statementType="PREPARED">
+  	  update address 
+  	  <set>
+	  	  <if test="receiver_name!=null">
+	  	  	receiver_name=#{receiver_name},
+	  	  </if>
+	  	  <if test="receiver_phone!=null">
+	  	  	receiver_phone=#{receiver_phone},
+	  	  </if>
+	  	  <if test="receiver_mobile!=null">
+	  	  	receiver_mobile=#{receiver_mobile},
+	  	  </if>
+	  	  <if test="receiver_province!=null">
+	  	  	receiver_province=#{receiver_province},
+	  	  </if>
+	  	  <if test="receiver_city!=null">
+	  	  	receiver_city=#{receiver_city},
+	  	  </if>
+	  	  <if test="receiver_district!=null">
+	  	  	receiver_district=#{receiver_district},
+	  	  </if>
+	  	  <if test="receiver_address!=null">
+	  	  	receiver_address=#{receiver_address},
+	  	  </if>
+	  	  <if test="receiver_zip!=null">
+	  	  	receiver_zip=#{receiver_zip},
+	  	  </if>
+	  		update_time=now()
+  	  </set>
+  	  where user_id=#{user_id} and id=#{id}
+  </update>
+  
+  <select id="findUserAddressByPage"  parameterType="java.util.Map"  resultType="address" statementType="PREPARED">
+  	  select * from address where user_id=#{user_id} limit #{offset},#{pageSize}
+  </select>
+  
+  <resultMap type="address" id="useraddressMap" autoMapping="true">
+	  <id column="id" property="id"/>
+	  <association property="user" javaType="user" autoMapping="true">
+	  	<id column="uid" property="id"/>
+	  	<result column="username" property="username"/>
+	  </association>
+  </resultMap>
+  <select id="findAllAddressByPage"  parameterType="java.util.Map"  resultMap="useraddressMap" statementType="PREPARED">
+  	  select a.id, a.user_id, a.receiver_name, a.receiver_phone, a.receiver_mobile, a.receiver_province, a.receiver_city, a.receiver_district, a.receiver_address, a.receiver_zip, a.create_time, a.update_time
+  	  ,u.username, u.id as uid 
+  	  from address a 
+  	  join user u
+  	  on u.id=a.user_id
+  	  limit #{offset},#{pageSize}
+  </select>
+  
+  <select id="findAllUserAddressByPage"  parameterType="java.util.Map"  resultType="address" statementType="PREPARED">
+  	  select * from address limit #{offset},#{pageSize}
+  </select>
+  
+  <select id="findTotalCount" parameterType="map" resultType="int" statementType="PREPARED">
+  	  select count(id) from address 
+  	  <if test="user_id!=-1">
+  	  	where user_id=#{user_id}
+  	  </if>
+  </select>
+  
+  <select id="findOneAddress" parameterType="int" resultType="address" statementType="PREPARED">
+  	  select * from address where id=#{id}
+  </select>
+  
+</mapper>

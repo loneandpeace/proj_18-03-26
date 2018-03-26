@@ -1,0 +1,147 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.divclass{
+	width: 1200px;
+	margin: 0 auto;
+}
+.logincontainer{
+	display: inline-block;
+}
+#boderline{
+	border: 1px solid gray;
+	text-align: center;
+	margin-top: 20px;
+}
+.logincontainer span:first-child{
+	color: gray;
+	font-size: 22px;
+	font-weight: 800;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+
+#loginlable{
+	color: white;
+	background-color: #CC3333;
+	border-bottom: 1px solid gray;
+	line-height: 35px;
+	font-weight: bold;
+}
+input{
+	width: 300px;
+	height: 35px;
+	margin: 9px 0;
+	font-size: 15px;
+}
+.td{
+	padding-left: 13px;
+}
+#inputbtn{
+	width: 90%;
+}
+#findback{
+	width: 90%;
+	margin-top: 5px;
+	font-size: 13px;
+	text-align: right;
+}
+tr:last-child td input{
+	background-color: #CC3333;
+	color: white;
+	font-weight: bold;
+}
+#guidtoregister{
+	font-size: 15px;
+}
+a{
+	text-decoration: none;
+	font-weight: 600;
+}
+a:link{
+	color: #CC3333;
+}
+#guidtoregister a:visited{
+	color: #CC3333;
+}
+a:hover{
+	color: #CC3333;
+	text-decoration: underline;
+}
+#guidtoregister a:link{
+	color: #CC3333;
+}
+#maincontainer{
+	text-align: center;
+	margin-bottom: 300px;
+	height: 500px;
+}
+#logoimg{
+	margin-top: 20px;
+}
+#maincontainer{
+	position: relative;
+}
+#maincontainer img{
+	position: absolute;
+	left: 100px;
+	top: 210px;
+}
+.logincontainer{
+	position: absolute;
+	top: 120px;
+	right: 100px;
+}
+
+#clear{
+	clear: both;
+}
+
+#boderline2{
+	margin-top: 20px;
+	border: 1px solid gray;
+	text-align: center;
+}
+#table{
+	width: 100%;
+	font-family: "Î¢ÈíÑÅºÚ";
+	color: grey;
+}
+.logincontainer2{
+	position: relative;
+	width: 450px;
+	top: 80px;
+	left: 650px;
+}
+.logincontainer2 span:first-child{
+	color: gray;
+	font-size: 22px;
+	font-weight: 800;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+
+/************************************/
+#footer{
+	position: relative;
+	padding: 10px 0;
+	bottom: 30px;
+}
+#footer P{
+	padding: 10px 0;
+}
+
+#check{
+	height: 18px;
+	width: 18px;
+	text-align: left;
+}
+#checkbox_span{
+	font-size: 13px;
+	padding-left: 10px;
+	color: gainsboro;
+}
+#foot{
+	margin: 0 auto;
+	position: absolute;
+	top: 700px;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.hw.entity.UserOrderItem">
+  
+  
+  
+  <insert id="addOrderItems" parameterType="list" keyColumn="id" useGeneratedKeys="true" keyProperty="id" statementType="PREPARED">
+  	insert into userorderitem (order_no, user_id, product_id, product_name, product_image, current_unit_price, payment, quantity, total_price, create_time, update_time) 
+  	values 
+  	<foreach collection="list" item="orderitem" separator=",">
+  	(#{orderitem.order_no}, #{orderitem.user_id}, #{orderitem.product_id}, #{orderitem.product_name}, #{orderitem.product_image}, #{orderitem.current_unit_price}, #{orderitem.payment}, #{orderitem.quantity}, #{orderitem.total_price}, now(), now())
+  	</foreach>
+  </insert>
+  
+  
+  
+</mapper>

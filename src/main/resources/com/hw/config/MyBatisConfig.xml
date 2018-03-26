@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<typeAliases>
+		<typeAlias type="com.hw.entity.User" alias="user"/>
+		<typeAlias type="com.hw.entity.Cate" alias="cate"/>
+		<typeAlias type="com.hw.entity.Product" alias="product"/>
+		<typeAlias type="com.hw.entity.Cart" alias="cart"/>
+		<typeAlias type="com.hw.entity.Address" alias="address"/>
+		<typeAlias type="com.hw.entity.UserOrder" alias="order"/>
+		<typeAlias type="com.hw.entity.UserOrderItem" alias="orderitem"/>
+		<typeAlias type="com.hw.entity.OrderVO" alias="orderVo"/>
+	</typeAliases>
+	
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC">
+      </transactionManager>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/scott"/>
+        <property name="username" value="root"/>
+        <property name="password" value="love5050"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+	    <mapper resource="com/hw/config/userMapper.xml"/>
+	    <mapper resource="com/hw/config/userCustomerMapper.xml"/>
+	    <mapper resource="com/hw/config/cateMapper.xml"/>
+	    <mapper resource="com/hw/config/productMapper.xml"/>
+	    <mapper resource="com/hw/config/cartMapper.xml"/>
+	    <mapper resource="com/hw/config/addressMapper.xml"/>
+	    <mapper resource="com/hw/config/orderMapper.xml"/>
+	    <mapper resource="com/hw/config/orderItemMapper.xml"/>
+  </mappers>
+
+</configuration>

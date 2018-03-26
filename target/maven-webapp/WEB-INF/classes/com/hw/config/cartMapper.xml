@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.hw.entity.Cart">
+
+  <select id="findCartByUserIdAndProductId"  parameterType="java.util.Map"  resultType="cart" statementType="PREPARED">
+  	  select * from cart where user_id=#{user_id} and product_id=#{product_id}
+  </select>
+	
+  <update id="updateCartByUserIdAndProductId" parameterType="java.util.Map" statementType="PREPARED">
+  	  update cart set quantity=quantity+#{quantity},update_time=now() where user_id=#{user_id} and product_id=#{product_id}
+  </update>
+  <update id="updateCartProductQuantity" parameterType="java.util.Map" statementType="PREPARED">
+  	  update cart 
+  	  <set>
+  	  	<if test="quantity>0">
+  	  		quantity=#{quantity},
+  	  	</if>
+  	  	update_time=now()
+  	  </set>
+		where id=#{id}
+  </update>
+  
+  <insert id="addProductIntoCartByUserIdAndProductId" parameterType="java.util.Map" statementType="PREPARED">
+  	  insert into cart (user_id, product_id, quantity, checked, create_time, update_time) 
+  	  values(#{user_id}, #{product_id}, #{quantity}, 0, now(), now())
+  </insert>
+  
+  <delete id="deleteProductInCart" parameterType="int" statementType="PREPARED">
+  	  delete from cart where id=#{id}
+  </delete>
+  
+  <!-- <update id="selectCartItemById" parameterType="int" statementType="PREPARED">
+  	  update cart set checked=1,update_time=now() where id=#{id}
+  </update>
+  <update id="unselectCartItemById" parameterType="int" statementType="PREPARED">
+  	  update cart set checked=0,update_time=now() where id=#{id}
+  </update>
+  <update id="checkedOrUncheckedAllProductInCart" parameterType="java.util.Map" statementType="PREPARED">
+  	  update cart set checked=#{checked},update_time=now() where user_id=#{user_id}
+  </update> -->
+  
+  <delete id="deleteSomeProductInCart" parameterType="java.util.Map" statementType="PREPARED">
+  	  delete from cart where user_id=#{user_id}
+  	  <if test="list != null">
+  	    and product_id in
+  	  	<foreach collection="list" item="int" index="index" open="(" separator="," close=")">
+  	  		#{item}
+  	  	</foreach>
+  	  </if>
+  </delete>
+  
+  <select id="selectCartByUserId"  parameterType="java.util.Map"  resultType="cart" statementType="PREPARED">
+  	  select * from cart where user_id=#{user_id} limit #{offset},#{pageSize}
+  </select>
+  
+  <select id="countProductInCart"  parameterType="int"  resultType="int" statementType="PREPARED">
+  	  select count(id) from cart where user_id=#{user_id}
+  </select>
+  
+  <select id="sumProductInCart"  parameterType="int"  resultType="int" statementType="PREPARED">
+  	  select sum(quantity) from cart where user_id=#{user_id}
+  </select>
+  
+  
+  <resultMap type="cart" id="cart_user_product_result" autoMapping="true">
+  	<id column="id" property="id"/>
+  	
+  	<association property="user" javaType="user" autoMapping="true">
+  		<id column="id" property="id"/>
+  		<result column="uid" property="id"/>
+  	</association>
+  	
+  	<association property="product" javaType="product" autoMapping="true">
+  		<!-- <id column="id" property="id"/>
+  		<result column="pid" property="id"/> -->
+  		<id column="pid" property="id"/>
+  		<result column="pprice" property="price"/>
+  	</association>
+  	
+  </resultMap>
+  
+  <select id="selectWholeCartByPage" parameterType="java.util.Map" resultMap="cart_user_product_result">
+   	  select c.id id, c.user_id user_id, c.product_id, c.quantity, c.checked, c.create_time, c.update_time ,
+   	  u.id uid,u.username username, p.name name,p.id pid,  p.price pprice
+   	  from cart c 
+   	  join user u
+   	  on c.user_id = u.id 
+   	  join product p
+   	  on p.id=c.product_id
+   	  where c.user_id=#{user_id} limit #{offset},#{pageSize}
+  </select>
+  
+  <select id="selectOneCart" parameterType="int" resultMap="cart_user_product_result">
+   	  select c.id id, c.user_id user_id, c.product_id, c.quantity, c.checked, c.create_time, c.update_time ,
+   	  u.id uid,u.username username, p.name name,p.id pid
+   	  from cart c 
+   	  join user u
+   	  on c.user_id = u.id 
+   	  left join product p
+   	  on p.id=c.product_id
+   	  where c.id=#{id}
+  </select>
+  
+  <update id="selectOption" parameterType="java.util.Map" statementType="PREPARED">
+  	  update cart set checked=#{checked},update_time=now()
+  	  <where>
+  	  	user_id=#{user_id}
+  	  	<if test="id>0">
+  	  		and id=#{id}
+  	  	</if>
+  	  </where>
+  </update>
+  
+  <select id="findCartByUserIdAndChecked" parameterType="int" resultType="cart" statementType="PREPARED">
+      select * from cart where user_id=#{uid} and checked=1
+  </select>
+  
+  <delete id="deleteCheckedCartByUserId" parameterType="int" statementType="PREPARED">
+  	delete from cart where user_id=#{user_id} and checked=1
+  </delete>
+  
+  <select id="getTotalPrice"  parameterType="int"  resultType="java.math.BigDecimal" statementType="PREPARED">
+  	  select sum(c.quantity*p.price) from cart c
+  	  join product p
+  	  on p.id=c.product_id 
+  	  where user_id=#{user_id}
+  </select>
+  
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.hw.entity.User">
+
+  <select id="checkUsername"  parameterType="java.lang.String"  resultType="java.lang.Integer">
+  	  select count(username) from user where username=#{username} and role=0
+  </select>
+  
+  <select id="checkUsernameAndPassword"  parameterType="java.util.Map"  resultType="com.hw.entity.User">
+  	  select id,username,password from user where username=#{username} and password=#{password} and role=0
+  </select>
+ 
+  <update id="updateUsertoken"  parameterType="java.util.Map">
+  	  update user set token=#{token} where username=#{username} and role=0
+  </update>
+  
+  <select id="checkUserToken"  parameterType="java.util.Map"  resultType="com.hw.entity.User">
+  	  select * from user where token=#{token} and role=0
+  </select>
+  
+  <update id="removeUserToken"  parameterType="java.lang.String">
+  	  update user set token=null where username=#{username} and role=0
+  </update>
+  
+  <select id="findAllUserByPage" parameterType="map" resultType="user">
+ 		select * from user limit #{offset},#{pageSize}
+  </select>
+  
+  <select id="findTotalCount" parameterType="int" resultType="int">
+ 		select count(id) from user
+  </select>
+  
+  <select id="findOneUser" parameterType="int" resultType="user">
+ 		select * from user where id=#{user_id}
+  </select>
+  
+  <delete id="deleteUser" parameterType="int">
+	 	delete from user where id=#{user_id}
+  </delete>
+  
+  <insert id="addNewAdministrator" parameterType="map">
+  		insert into user(username,password,email,phone,question,answer,role,create_time,update_time) 
+  		values(#{username},#{password},#{email},#{phone},#{question},#{answer},0,now(),now())
+  </insert>
+  
+  <select id="searchUser" parameterType="map" resultType="user">
+  		select * from user where username=#{info} limit #{offset},#{pageSize}
+  </select>
+  <select id="countSearchUser" parameterType="String" resultType="int">
+  		select count(id) from user where username like #{info}
+  </select>
+
+</mapper>

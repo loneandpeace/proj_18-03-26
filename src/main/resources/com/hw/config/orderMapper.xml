@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.hw.entity.UserOrder">
+  
+  <insert id="addOrder" parameterType="order" keyColumn="id" useGeneratedKeys="true" keyProperty="id" statementType="PREPARED">
+  	insert into userorder (order_no, user_id, shipping_id, payment, payment_type, postage, status, create_time, update_time) 
+  	values(#{order_no}, #{user_id}, #{shipping_id}, #{payment}, #{payment_type}, #{postage}, #{status}, now(), now())
+  </insert>
+  
+  <select id="findTotalCount" parameterType="int" resultType="int" statementType="PREPARED">
+  	select count(id) from userorder where user_id=#{uid}
+  </select>
+  <select id="findAllTotalCount" parameterType="int" resultType="int" statementType="PREPARED">
+  	select count(id) from userorder
+  </select>
+  
+  <select id="findOrderStatus" parameterType="long" resultType="int" statementType="PREPARED">
+  	select status from userorder where order_no=#{order_no}
+  </select>
+  <select id="findOrderPaymentType" parameterType="long" resultType="int" statementType="PREPARED">
+  	select payment_type from userorder where order_no=#{order_no}
+  </select>
+  
+  
+  
+  <resultMap type="order" id="order_address_map" autoMapping="true">
+  	<id column="uoid" property="id"/>
+  	<association property="user" javaType="user" autoMapping="true">
+  		<id column="uid" property="id"/>
+  	</association>
+  	<association property="address" javaType="address" autoMapping="true">
+  		<id column="aid" property="id"/>
+  	</association>
+  </resultMap>
+  <select id="findOrderAddressUserByPage" parameterType="map" resultMap="order_address_map" statementType="PREPARED">
+  	select  uo.id uoid,  uo.order_no order_no,  uo.user_id  user_id,  uo.shipping_id shipping_id,  
+  	uo.payment payment,  uo.payment_type payment_type,  uo.postage postage,  uo.status status,  
+  	uo.payment_type payment_type,  uo.send_time send_time,  uo.end_time end_time,  uo.close_time close_time,  
+  	uo.create_time create_time,  uo.update_time update_time,  ad.receiver_name receiver_name,  
+  	ad.receiver_phone receiver_phone,  ad.receiver_mobile receiver_mobile,  ad.receiver_province receiver_province,  
+  	ad.id aid, ad.receiver_city receiver_city,  ad.receiver_district receiver_district,  ad.receiver_address receiver_address,  
+  	us.username username,  us.id uid
+  	from userorder uo 
+	join user us
+  	on us.id=uo.user_id
+  	join address ad
+  	on uo.shipping_id=ad.id
+  	where uo.user_id=#{user_id} limit #{offset},#{pageSize}
+  </select>
+  <!-- 查询所有order -->
+  <select id="findAllOrderAddressUserByPage" parameterType="map" resultMap="order_address_map" statementType="PREPARED">
+  	select  uo.id uoid,  uo.order_no order_no,  uo.user_id  user_id,  uo.shipping_id shipping_id,  
+  	uo.payment payment,  uo.payment_type payment_type,  uo.postage postage,  uo.status status,  
+  	uo.payment_type payment_type,  uo.send_time send_time,  uo.end_time end_time,  uo.close_time close_time,  
+  	uo.create_time create_time,  uo.update_time update_time,  ad.receiver_name receiver_name,  
+  	ad.receiver_phone receiver_phone,  ad.receiver_mobile receiver_mobile,  ad.receiver_province receiver_province,  
+  	ad.id aid, ad.receiver_city receiver_city,  ad.receiver_district receiver_district,  ad.receiver_address receiver_address,  
+  	us.username username,  us.id uid
+  	from userorder uo 
+	join user us
+  	on us.id=uo.user_id
+  	join address ad
+  	on uo.shipping_id=ad.id 
+  	limit #{offset},#{pageSize}
+  </select>
+  
+  
+  
+  
+  
+  <resultMap type="order" id="one_order_detail" autoMapping="true">
+ 	 <id column="uoid" property="id"/>
+ 	 <association property="address" javaType="address" autoMapping="true">
+  		<id column="aid" property="id"/>
+  	</association>
+  	<association property="user" javaType="user" autoMapping="true">
+  		<id column="uid" property="id"/>
+  	</association>
+  	<collection property="orderItems" javaType="list" ofType="orderitem" autoMapping="true">
+	  	<id column="uoi_id" property="id"/>
+	  	<result column="uoi_create_time" property="create_time"/>
+	  	<result column="uoi_update_time" property="update_time"/>
+	  	<result column="uoi_order_no" property="order_no"/>
+  	</collection>
+  </resultMap>
+  <select id="findOneOrderDetail" parameterType="long" resultMap="one_order_detail" statementType="PREPARED">
+  	select uo.id uoid,  uo.order_no order_no,  uo.user_id  user_id,  uo.shipping_id shipping_id,  
+  	uo.payment payment,  uo.payment_type payment_type,  uo.postage postage,  uo.status status,  
+  	uo.payment_type payment_type,  uo.send_time send_time,  uo.end_time end_time,  uo.close_time close_time,  
+  	uo.create_time create_time,
+  	
+  	uoi.id uoi_id,  uoi.order_no uoi_order_no,  uoi.product_id product_id, uoi.product_image product_image, uoi.product_name product_name,   
+  	uoi.current_unit_price current_unit_price,  uoi.payment uoi_payment<!-- 这一条手动映射 -->,  uoi.quantity quantity,
+  	uoi.create_time uoi_create_time<!-- 这一条手动映射 -->,  uoi.update_time uoi_update_time<!-- 这一条手动映射 -->,  uoi.total_price total_price, 
+  	
+  	ad.receiver_name receiver_name, ad.receiver_phone receiver_phone,  ad.receiver_mobile receiver_mobile,  ad.receiver_province receiver_province,  
+  	ad.id aid, ad.receiver_city receiver_city,  ad.receiver_district receiver_district,  ad.receiver_address receiver_address
+  	
+  	,u.id uid,u.username username
+  	
+  	from userorder uo 
+  	join userorderitem uoi 
+  	on uo.order_no=uoi.order_no
+  	join address ad
+  	on uo.shipping_id=ad.id
+  	join user u
+  	on u.id=uo.user_id
+  	where uo.order_no=#{order_no}
+  </select>
+  
+  <update id="updateOrderStatusByOrderNo" parameterType="map" statementType="PREPARED">
+  	update userorder set status=#{status} 
+  	<if test="status==0">
+  		, close_time=now()
+  	</if>
+  	<if test="status==40">
+  		, send_time=now()
+  	</if>
+  	where order_no=#{order_no}
+  </update>
+  
+  
+  
+  
+</mapper>

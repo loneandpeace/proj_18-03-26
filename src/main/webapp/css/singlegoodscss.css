@@ -1,0 +1,299 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.topspan{
+	color: black;
+	font-size: 12px;
+	color: gray;
+}
+.searchbar{
+	font-size: 16px;
+}
+#topback{
+	margin-bottom: 10px;
+}
+a{
+	text-decoration: none;
+}
+a:link{
+	color: gray;
+}
+a:visited{
+	color: gray;
+}
+#topback a:hover,
+#header a:hover,
+#linkbar a:hover{
+	color: darkred;
+}
+a:active{
+	color: black;
+}
+
+.divclass01{
+	width: 1200px;
+	margin: 0 auto;
+}
+#commodityguid{
+	position: relative;
+}
+#commodityguid ul{
+	position: absolute;
+	bottom: 5px;
+	display: inline-block;
+	width: 945px;
+	padding-left: 10px;
+	justify-content: flex-end;
+}
+
+#commodityguid ul span{
+	color: gray;
+	font-size: 20px;
+}
+
+#commodityguid li{
+	display: inline-block;
+	padding: 0px 35px;
+	font-size: 20px;
+	font-family: "微软雅黑";
+}
+
+
+.searchbar{
+	height:30px;border-color: gray;
+}
+
+#logo{
+	width: 250px;
+}
+
+#guidbar{
+	padding: 4px 0;
+	padding-right: 10px;
+}
+
+#header{
+	padding: 5px 0;
+}
+
+#commodityguid{
+	padding: 5px 0 0 0;
+}
+#guid{
+	margin-top: 10px;
+}
+
+.goods img{
+	padding: 15px  30px;
+}
+
+#conmodity div{
+	display: inline-block;
+}
+
+#linkbar{
+	display: inline-block;
+	color: black;
+	font-size: 15px;
+	float: right;
+	padding-top: 10px;
+}
+#conmoditydiv1{
+	padding-left: 50px;
+}
+
+
+#conmoditydiv1 img{
+	border: 1px solid gainsboro;
+	margin: 0 0;
+}
+#conmoditydiv101{
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
+#conmoditydiv2{
+	float: right;
+	margin-top: 35px;
+	margin-right: 150px;
+}
+.detials{
+	margin: 10px 3px;
+	font-weight: lighter;
+	font-size: 17px;
+	font-family: "微软雅黑";
+}
+.buttons{
+	margin-top: 15px;
+	padding:3px 10px;
+	background-color: ##CC3333;
+	font-size: 15px;
+}
+
+#conmoditydiv201>p:first-child{
+	font-family: ""微软雅黑"";
+}
+
+
+
+
+
+/*#conmoditydiv2{
+	position: relative;
+}
+#conmoditydiv201{
+	position: absolute;
+	top: 100px;
+	right: 100px;
+	width: 40-px;
+}*/
+
+
+
+/****************************************/
+
+
+
+
+
+.helper{
+	width: 1200px;
+	border: 1px solid darkgray;
+	padding: 20px 30px;
+}
+
+.helper ul{
+	width: 1100px;
+	list-style: none;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 15px;
+	font-weight: lighter;
+	display: block;
+}
+
+.helper li{
+	display: inline-block;
+	margin: 13px 30px;
+	padding: 0 10px;
+	color: red;
+	/*border-left: 1px solid gainsboro;*/
+}
+
+.helper ul:last-child{
+	/*border-left: 1px solid gainsboro;*/
+}
+
+.helper li a,
+.helper span{
+	color: gray;
+	font-size: 13px;
+	font-weight: lighter;
+}
+
+/*.helper ul:first-child li{
+	padding: 0 50px;
+}*/
+/*.add{
+	padding: 0 50px;
+}*/
+.helper li:first-child{
+	border-left: hidden;
+}
+
+.helper ul:last-child{
+	margin: 0 auto;
+	background-color: gainsboro;
+	/*display: flex;*/
+}
+
+.ahh{
+	display: inline-block;
+	height: 150px;
+	width: 2px;
+	border-left: 1px solid gainsboro;
+	margin: 0 40px;
+}
+.helper li a:hover{
+	color: black;
+}
+
+/****************************************/
+
+
+#specc{
+	background-color: #CC3333;
+	border: 1px solid black;
+	width: 150px;
+	height: 35px;
+	color: white;
+}
+#specc:hover{
+	background-color: indianred;
+}
+#specc{
+	transition: all 0.1s;
+}
+#comment img{
+	border: 1px solid gainsboro;
+}
+#commentleft td{
+	border: 1px solid gainsboro;
+	font-family: "微软雅黑";
+}
+#commentleft{
+	float: left;
+}
+#commentleft table{
+/*	border: 1px solid gray;*/
+	border-spacing: 0;
+}
+#commentleft table td{
+	padding: 8px 38px;
+}
+#commentright{
+	float: right;
+}
+#commentright table{
+	border-spacing: 0;
+	width: 1030px;
+	border: 1px solid gainsboro;
+}
+#commentright table td{
+	font-family: "微软雅黑";
+	font-size: 15px;
+	padding: 8px 30px;
+} 
+#topline{
+	border-bottom: 1px solid gainsboro;
+}
+#bottomline{
+	border-top: 1px solid gainsboro;
+}
+#clear{
+	clear: both;
+}
+
+/*#comment *:hover{
+	color: black
+}*/
+
+
+.choose{
+	height: 30px;
+	width: 35px;
+	text-align: center;
+	border: 1px solid lightgray;
+	display: inline-block;
+	line-height: 31px;
+	font-size: 13px;
+	font-family: "微软雅黑";
+}
+.choose:hover{
+	border-color: #CC3333;
+}
+
+#footer p{
+	padding: 10px 0;
+}
+

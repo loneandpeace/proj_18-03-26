@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.hw.entity.Product">
+
+  <resultMap type="product" id="findAllProductByPageMap">
+    <id column="id" property="id"></id>
+    <result column="category_id" property="category_id" />
+    <result column="name" property="name" />
+    <result column="subtitle" property="subtitle" />
+    <result column="main_image" property="main_image" />
+    <result column="sub_images" property="sub_images" />
+    <result column="detail" property="detail" />
+    <result column="price" property="price" />
+    <result column="stock" property="stock" />
+    <result column="status" property="status" />
+    <result column="create_time" property="create_time" javaType="java.util.Date"/>
+    <result column="update_time" property="update_time" javaType="java.util.Date"/>
+    <result column="cate_name" property="cate_name" />
+  </resultMap>
+  
+  <select id="findAllProductByPage"  parameterType="java.util.Map"  resultMap="findAllProductByPageMap" statementType="PREPARED">
+  	  select p.id id, p.category_id category_id, p.name name, p.subtitle subtitle, p.main_image main_image, p.sub_images sub_images, p.detail detail,
+  	  p.price price, p.stock stock, p.status status, p.create_time create_time, p.update_time update_time, c.name cate_name
+  	  from product p join category c on p.category_id=c.id limit #{offset},#{pageSize}
+  </select>
+
+
+<!-- 
+  <select id="findAllProductByPage"  parameterType="java.util.Map"  resultType="com.hw.entity.Product" statementType="PREPARED">
+  	  select * from product limit #{offset},#{pageSize}
+  </select>
+ -->  
+  <select id="findTotalCount"  resultType="java.lang.Integer" statementType="PREPARED">
+  	  select count(name) from product
+  </select>
+
+  
+  <update id="addProduct"  parameterType="java.util.Map" statementType="PREPARED">
+  	  insert into product(category_id, name, subtitle, main_image, sub_images, detail, price,stock, status, create_time, update_time) 
+  	  values(#{category_id}, #{name}, #{subtitle}, #{main_image}, #{sub_images}, #{detail}, #{price}, #{stock}, #{status}, now(), now())
+  </update>
+  
+  <delete id="deleteProduct" parameterType="int" statementType="PREPARED">
+  	  delete from product where id=#{productid}
+  </delete>
+  
+  <select id="findOneProduct"  parameterType="int"  resultType="com.hw.entity.Product" statementType="PREPARED">
+  	  select * from product where id=#{productid}
+  </select>
+  
+  <update id="updateProduct"  parameterType="java.util.Map" statementType="PREPARED">
+  	  update product set category_id=#{category_id}, name=#{name}, subtitle=#{subtitle}, main_image=#{main_image}, 
+  	  sub_images=#{sub_images}, detail=#{detail}, price=#{price}, stock=#{stock}, status=#{status},update_time=now() where id=#{id}
+  </update>
+  
+  <!-- 
+  <select id="findSomeProductByInfo"  parameterType="java.util.Map"  resultType="com.hw.entity.Product" statementType="PREPARED">
+  </select>
+   -->
+  <select id="findSomeProductByInfo"  parameterType="java.util.Map"  resultMap="findAllProductByPageMap" statementType="PREPARED">
+  	  select p.id id, p.category_id category_id, p.name name, p.subtitle subtitle, p.main_image main_image, p.sub_images sub_images, p.detail detail,
+  	  p.price price, p.stock stock, p.status status, p.create_time create_time, p.update_time update_time, c.name cate_name
+  	  from product p join category c on p.category_id=c.id where p.name like #{infor} limit #{offset},#{pageSize}
+  </select>
+  <select id="countSomeProductByInfo" parameterType="String"  resultType="java.lang.Integer">
+  	  select count(id) from product  where name like #{infor}
+  </select>
+  
+  <select id="getProductStock" parameterType="int"  resultType="long">
+  	  select stock from product  where id=#{product_id}
+  </select>
+  
+  <update id="reduceProductStock"  parameterType="java.util.Map" statementType="PREPARED">
+  	  update product set stock=stock-#{quantity} where id=#{product_id}
+  </update>
+  
+  
+
+</mapper>
